@@ -1,0 +1,245 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>GUAPACHA S.A.S | Envases Especializados para Pinturas</title>
+    
+    <link href="https://fonts.googleapis.com/css2?family=Syncopate:wght@700&family=Inter:wght@300;400;700;900&display=swap" rel="stylesheet">
+
+    <style>
+        :root {
+            --primary: #0062FF; 
+            --dark: #020617;
+            --surface: #0f172a;
+            --border: rgba(255,255,255,0.1);
+            --accent: #25D366;
+            --text-muted: #94a3b8;
+        }
+
+        * { margin: 0; padding: 0; box-sizing: border-box; }
+        body { font-family: 'Inter', sans-serif; background-color: var(--dark); color: #fff; line-height: 1.6; overflow-x: hidden; scroll-behavior: smooth; }
+
+        .container { width: 90%; max-width: 1400px; margin: 0 auto; }
+        span.blue { color: var(--primary); }
+
+        /* NAVEGACIÓN */
+        nav {
+            height: 110px; display: flex; align-items: center; border-bottom: 2px solid var(--primary);
+            background: rgba(2, 6, 23, 0.95); position: sticky; top: 0; z-index: 1000; backdrop-filter: blur(10px);
+        }
+        .nav-content { width: 92%; max-width: 1400px; margin: 0 auto; display: flex; justify-content: space-between; align-items: center; }
+        .logo-box { display: flex; align-items: center; gap: 15px; text-decoration: none; color: white; }
+        .logo-img { height: 80px; width: auto; }
+        .logo-text { font-family: 'Syncopate', sans-serif; font-size: 1.4rem; letter-spacing: -1px; }
+
+        .menu { display: flex; gap: 25px; }
+        .menu a { color: #fff; text-decoration: none; font-weight: 700; font-size: 0.75rem; text-transform: uppercase; letter-spacing: 1px; opacity: 0.7; transition: 0.3s; }
+        .menu a:hover { opacity: 1; color: var(--primary); }
+
+        /* HERO */
+        .hero {
+            height: 85vh; background: linear-gradient(rgba(2, 6, 23, 0.6), rgba(2, 6, 23, 0.9)), url('empresa.jpg') center/cover;
+            display: flex; align-items: center; justify-content: center; text-align: center;
+        }
+        .hero-content h1 { font-size: clamp(2.5rem, 8vw, 5.5rem); font-weight: 900; letter-spacing: -3px; line-height: 0.85; margin-bottom: 20px; }
+        .hero-tag { letter-spacing: 12px; font-weight: 900; color: var(--primary); text-transform: uppercase; font-size: 0.9rem; margin-bottom: 10px; display: block; }
+
+        /* SECCIONES */
+        .section { padding: 120px 0; }
+        .section-header { text-align: center; margin-bottom: 70px; }
+        .section-title { font-family: 'Syncopate', sans-serif; font-size: 2.2rem; text-transform: uppercase; margin-bottom: 15px; }
+        .section-subtitle { color: var(--text-muted); max-width: 600px; margin: 0 auto; }
+
+        /* STATS */
+        .stats-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(200px, 1fr)); gap: 30px; margin-bottom: 60px; }
+        .stat-card { background: var(--surface); padding: 40px; border-radius: 30px; text-align: center; border: 1px solid var(--border); }
+        .stat-card h3 { color: var(--primary); font-size: 2.5rem; font-weight: 900; }
+
+        /* PRODUCTOS */
+        .grid-products { display: grid; grid-template-columns: repeat(auto-fit, minmax(320px, 1fr)); gap: 30px; }
+        .product-card { background: var(--surface); border: 1px solid var(--border); border-radius: 40px; padding: 40px; transition: 0.4s; position: relative; }
+        .product-card:hover { border-color: var(--primary); transform: translateY(-10px); }
+        .product-card img { width: 100%; height: 300px; object-fit: contain; margin-bottom: 20px; }
+        .product-price { color: var(--primary); font-size: 1.8rem; font-weight: 900; display: block; margin-top: 10px; }
+
+        /* CALIDAD TÉCNICA */
+        .quality-box { background: linear-gradient(45deg, #001a4d, #0062FF); padding: 60px; border-radius: 40px; display: flex; align-items: center; gap: 40px; margin-top: 40px; }
+        .quality-text { flex: 1; }
+        .quality-text h3 { font-family: 'Syncopate', sans-serif; margin-bottom: 15px; }
+
+        /* PROCESO */
+        .process-section { background: #000; }
+        .process-steps { display: grid; grid-template-columns: repeat(auto-fit, minmax(250px, 1fr)); gap: 40px; }
+        .step { border-left: 2px solid var(--primary); padding-left: 25px; }
+
+        /* FAQ */
+        .faq-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 30px; }
+        .faq-item { background: var(--surface); padding: 25px; border-radius: 20px; border: 1px solid var(--border); }
+        .faq-item strong { color: var(--primary); display: block; margin-bottom: 10px; }
+
+        /* CONTACTO */
+        .contact-wrapper { display: grid; grid-template-columns: 1fr 1.3fr; gap: 50px; }
+        .info-side { background: var(--surface); padding: 50px; border-radius: 40px; border: 1px solid var(--border); }
+        .form-group { display: grid; grid-template-columns: 1fr 1fr; gap: 20px; }
+        input, select, textarea { background: #1e293b; border: 1px solid var(--border); color: #fff; padding: 18px; border-radius: 15px; width: 100%; margin-bottom: 15px; }
+        .btn-main { background: var(--primary); color: white; padding: 20px; border-radius: 15px; border: none; font-weight: 900; text-transform: uppercase; cursor: pointer; width: 100%; }
+
+        /* MAPA */
+        .map-box { margin-top: 50px; height: 500px; border-radius: 40px; overflow: hidden; border: 1px solid var(--border); }
+
+        /* WHATSAPP */
+        .wa-btn { position: fixed; bottom: 30px; right: 30px; background: var(--accent); width: 65px; height: 65px; border-radius: 20px; display: flex; align-items: center; justify-content: center; z-index: 1000; }
+
+        @media (max-width: 900px) { .contact-wrapper, .form-group, .faq-grid { grid-template-columns: 1fr; } .quality-box { flex-direction: column; text-align: center; } .menu { display: none; } }
+    </style>
+</head>
+<body>
+
+    <nav>
+        <div class="nav-content">
+            <a href="#" class="logo-box">
+                <img src="logo1-Photoroom.png" alt="Guapacha" class="logo-img">
+                <div class="logo-text">GUAPACHA<span class="blue">.SAS</span></div>
+            </a>
+            <div class="menu">
+                <a href="#productos">Catálogo</a>
+                <a href="#calidad">Calidad</a>
+                <a href="#proceso">Proceso</a>
+                <a href="#contacto">Contacto</a>
+            </div>
+        </div>
+    </nav>
+
+    <header id="inicio" class="hero">
+        <div class="hero-content">
+            <span class="hero-tag">Fabricación Especializada</span>
+            <h1>SÓLIDOS EN <br> <span class="blue">PINTURAS</span></h1>
+            <p style="color: var(--text-muted); font-size: 1.1rem; max-width: 600px; margin: 20px auto;">Envases industriales de polipropileno virgen diseñados para la máxima protección de pinturas y recubrimientos.</p>
+        </div>
+    </header>
+
+    <section class="section">
+        <div class="container">
+            <div class="stats-grid">
+                <div class="stat-card"><h3>+15</h3><p>Años de Experiencia</p></div>
+                <div class="stat-card"><h3>100%</h3><p>Polipropileno Virgen</p></div>
+                <div class="stat-card"><h3>24h</h3><p>Despacho Bogotá</p></div>
+                <div class="stat-card"><h3>Elite</h3><p>Sellado Hermético</p></div>
+            </div>
+        </div>
+    </section>
+
+    <section id="productos" class="section" style="background: #010409;">
+        <div class="container">
+            <div class="section-header">
+                <h2 class="section-title">NUESTROS <span class="blue">ENVASES</span></h2>
+                <p class="section-subtitle">Diseñados para resistir pigmentos pesados y solventes industriales.</p>
+            </div>
+            <div class="grid-products">
+                <article class="product-card">
+                    <img src="caneca-Photoroom.png" alt="Caneca 5G">
+                    <h3>Caneca Pintura 5G</h3>
+                    <p style="color: var(--text-muted); font-size: 0.8rem; margin-bottom: 10px;">Con asa metálica reforzada para transporte pesado.</p>
+                    <span class="product-price">15.900 COP</span>
+                </article>
+                <article class="product-card">
+                    <img src="envase-Photoroom.png" alt="Envase 1G">
+                    <h3>Galón Pintura Elite</h3>
+                    <p style="color: var(--text-muted); font-size: 0.8rem; margin-bottom: 10px;">Paredes gruesas para prevenir deformaciones por apilamiento.</p>
+                    <span class="product-price">8.500 COP</span>
+                </article>
+                <article class="product-card">
+                    <img src="tapa-Photoroom.png" alt="Cierres">
+                    <h3>Sistema de Cierre</h3>
+                    <p style="color: var(--text-muted); font-size: 0.8rem; margin-bottom: 10px;">Tapa con empaque para evitar la formación de nata.</p>
+                    <span class="product-price">2.400 COP</span>
+                </article>
+            </div>
+        </div>
+    </section>
+
+    <section id="calidad" class="section" style="background: #000;">
+        <div class="container">
+            <div class="quality-box">
+                <div class="quality-text">
+                    <h3>RESISTENCIA <span class="blue">INDUSTRIAL</span></h3>
+                    <p>Nuestros envases están optimizados para líneas de llenado automático y manual. Soportan vibraciones extremas durante el transporte y garantizan que la pintura conserve su viscosidad original sin filtraciones de aire.</p>
+                </div>
+                <div style="font-weight: 900; font-size: 3rem; color: rgba(255,255,255,0.1);">TECH</div>
+            </div>
+        </div>
+    </section>
+
+    <section id="proceso" class="section process-section">
+        <div class="container">
+            <div class="section-header"><h2 class="section-title">CONTROL DE <span class="blue">CALIDAD</span></h2></div>
+            <div class="process-steps">
+                <div class="step"><span>01</span><h4>POLÍMERO VIRGEN</h4><p>Garantizamos envases libres de impurezas para no alterar el color.</p></div>
+                <div class="step"><span>02</span><h4>INYECCIÓN PRO</h4><p>Moldes de precisión que aseguran un encaje perfecto de la tapa.</p></div>
+                <div class="step"><span>03</span><h4>PRUEBA DE FUGA</h4><p>Testeo hidrostático para asegurar sellado hermético total.</p></div>
+                <div class="step"><span>04</span><h4>ENVÍO ÁGIL</h4><p>Despachamos directamente a su planta de producción.</p></div>
+            </div>
+        </div>
+    </section>
+
+    <section class="section">
+        <div class="container">
+            <div class="section-header"><h2 class="section-title">CONSULTAS <span class="blue">TÉCNICAS</span></h2></div>
+            <div class="faq-grid">
+                <div class="faq-item">
+                    <strong>¿Tienen stock para entrega inmediata?</strong>
+                    <p>Mantenemos inventario constante de canecas y galones blancos para entrega en menos de 24 horas en Bogotá.</p>
+                </div>
+                <div class="faq-item">
+                    <strong>¿Los envases son compatibles con solventes?</strong>
+                    <p>Sí, nuestro polipropileno de alta densidad es resistente a la mayoría de solventes usados en la industria de pinturas.</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <section id="contacto" class="section">
+        <div class="container">
+            <div class="contact-wrapper">
+                <div class="info-side">
+                    <h2 class="section-title" style="text-align: left; font-size: 1.5rem;">GUAPACHA <span class="blue">S.A.S</span></h2>
+                    <p style="margin: 20px 0; color: var(--text-muted);">Sede Industrial Puente Aranda.</p>
+                    <p><strong>Ubicación:</strong> Calle 7 # 31-31, Bogotá</p>
+                    <p><strong>Ventas WhatsApp:</strong> +57 323 658 3572</p>
+                </div>
+                <div class="form-side">
+                    <h3 style="font-weight: 900; margin-bottom: 30px;">SOLICITAR PRECIOS DE FÁBRICA</h3>
+                    <form onsubmit="event.preventDefault(); alert('Solicitud de cotización enviada');">
+                        <div class="form-group">
+                            <input type="text" placeholder="Tu Nombre *" required>
+                            <input type="text" placeholder="Fábrica de Pintura">
+                        </div>
+                        <input type="email" placeholder="Correo corporativo *" required>
+                        <select required>
+                            <option value="">Producto Requerido</option>
+                            <option>Caneca 5G (Pinturas)</option>
+                            <option>Galón Elite</option>
+                            <option>Sistema de Tapas</option>
+                        </select>
+                        <textarea rows="4" placeholder="Indique volumen mensual o pedido inicial..."></textarea>
+                        <button type="submit" class="btn-main">OBTENER COTIZACIÓN</button>
+                    </form>
+                </div>
+            </div>
+            <div class="map-box">
+                <iframe width="100%" height="100%" style="border:0;" loading="lazy" src="https://www.google.com/maps/embed/v1/place?key=TU_API_KEY&q=Calle+7+%23+31-31+Puente+Aranda+Bogota7"></iframe>
+            </div>
+        </div>
+    </section>
+
+    <footer style="padding: 50px 0; text-align: center; border-top: 1px solid var(--border);">
+        <p style="color: #475569; font-size: 0.7rem; font-weight: 700; letter-spacing: 3px;">GUAPACHA S.A.S © 2026 | BOGOTÁ - COLOMBIA</p>
+    </footer>
+
+    <a href="https://wa.me/573236583572" class="wa-btn" target="_blank">
+        <img src="https://upload.wikimedia.org/wikipedia/commons/6/6b/WhatsApp.svg" width="35" alt="WhatsApp">
+    </a>
+
+</body>
+</html>
